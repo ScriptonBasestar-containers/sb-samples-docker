@@ -246,6 +246,15 @@ sb-samples-docker/
 
 개선 사항이나 추가할 서비스가 있다면 Issue나 Pull Request를 환영합니다!
 
+기여 방법에 대한 자세한 내용은 [CONTRIBUTING.md](CONTRIBUTING.md)를 참조하세요.
+
+**기여할 수 있는 것들**:
+- 새로운 웹 서비스 추가
+- 기존 설정 개선 및 최적화
+- 문서화 개선
+- 버그 수정
+- 유틸리티 스크립트 추가
+
 ## 라이센스
 
 MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
