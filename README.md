@@ -10,6 +10,9 @@
 - [포함된 서비스](#포함된-서비스)
 - [포트 맵](#포트-맵)
 - [빠른 시작](#빠른-시작)
+  - [기본 사용법](#기본-사용법)
+  - [환경 변수 설정](#환경-변수-설정)
+  - [헬퍼 스크립트 사용](#헬퍼-스크립트-사용)
 - [주의사항](#주의사항)
 - [디렉토리 구조](#디렉토리-구조)
 
@@ -131,7 +134,60 @@ services:
       - 8081:8080  # 8080 대신 8081 사용
 ```
 
-또는 환경 변수를 사용하여 포트를 커스터마이징할 수 있습니다 (향후 .env 파일 지원 예정).
+또는 환경 변수를 사용하여 포트를 커스터마이징할 수 있습니다 (아래 "환경 변수 설정" 참조).
+
+### 환경 변수 설정
+
+프로젝트 루트에 `.env.example` 파일이 제공됩니다. 이를 사용하여 포트와 데이터베이스 설정을 커스터마이징할 수 있습니다:
+
+```bash
+# .env.example을 복사하여 .env 파일 생성
+cp .env.example .env
+
+# 원하는 값으로 수정
+vi .env
+```
+
+`.env` 파일 예제:
+```bash
+# 포트 충돌 방지 - 각 서비스에 다른 포트 할당
+WORDPRESS_PORT=8080
+JOOMLA_PORT=8081
+DRUPAL_PORT=8082
+
+# 데이터베이스 비밀번호
+DB_ROOT_PASSWORD=your_secure_password
+WORDPRESS_DB_PASSWORD=wordpress_password
+
+# 타임존
+TZ=Asia/Seoul
+```
+
+**주의**: `.env` 파일에는 비밀번호가 포함되므로 git에 커밋하지 마세요! (`.gitignore`에 이미 추가되어 있습니다)
+
+### 헬퍼 스크립트 사용
+
+프로젝트 루트의 `scripts/` 디렉토리에서 편리한 헬퍼 스크립트를 제공합니다:
+
+```bash
+# 사용 가능한 서비스 목록 확인
+./scripts/list.sh
+
+# 포트 사용 현황 확인
+./scripts/ports.sh
+
+# 서비스 시작
+./scripts/start.sh wordpress
+
+# 특정 docker-compose 파일 지정
+./scripts/start.sh nextcloud -f dc-pg.yml
+
+# 서비스 중지
+./scripts/stop.sh wordpress
+
+# 볼륨까지 완전 삭제
+./scripts/stop.sh wordpress -v
+```
 
 ## 주의사항
 
