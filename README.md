@@ -169,6 +169,8 @@ TZ=Asia/Seoul
 
 프로젝트 루트의 `scripts/` 디렉토리에서 편리한 헬퍼 스크립트를 제공합니다:
 
+#### 기본 관리 스크립트
+
 ```bash
 # 사용 가능한 서비스 목록 확인
 ./scripts/list.sh
@@ -187,6 +189,49 @@ TZ=Asia/Seoul
 
 # 볼륨까지 완전 삭제
 ./scripts/stop.sh wordpress -v
+```
+
+#### 백업 및 복원 스크립트
+
+```bash
+# 서비스 백업 (데이터베이스 + 파일)
+./scripts/backup.sh wordpress
+
+# 데이터베이스만 백업
+./scripts/backup.sh wordpress --database-only
+
+# 파일만 백업
+./scripts/backup.sh wordpress --files-only
+
+# 백업 경로 지정
+./scripts/backup.sh wordpress -o /path/to/backups
+
+# 백업에서 복원
+./scripts/restore.sh wordpress -b /path/to/backup
+
+# 데이터베이스만 복원
+./scripts/restore.sh wordpress -b /path/to/backup --database-only
+
+# 파일만 복원
+./scripts/restore.sh wordpress -b /path/to/backup --files-only
+```
+
+**지원 서비스**: wordpress, joomla, drupal, mediawiki, nextcloud, phabricator
+
+#### 헬스 체크 스크립트
+
+```bash
+# 단일 서비스 상태 확인
+./scripts/health-check.sh wordpress
+
+# 모든 서비스 상태 확인
+./scripts/health-check.sh --all
+
+# 상세 정보 포함 (리소스 사용량)
+./scripts/health-check.sh wordpress --verbose
+
+# JSON 출력 (자동화에 유용)
+./scripts/health-check.sh wordpress --json
 ```
 
 ## 주의사항
