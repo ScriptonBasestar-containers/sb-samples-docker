@@ -28,7 +28,7 @@ docker-compose up -d
 ```bash
 ./scripts/start.sh flarum
 ./scripts/stop.sh flarum
-./scripts/backup.sh flarum
+# 백업 스크립트는 현재 Flarum 미지원
 ```
 
 ## 환경 변수

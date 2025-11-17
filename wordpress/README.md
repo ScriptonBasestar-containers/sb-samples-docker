@@ -35,6 +35,12 @@ docker-compose up -d
 
 # 볼륨까지 삭제
 ./scripts/stop.sh wordpress -v
+
+# 백업 (데이터베이스 + 파일)
+./scripts/backup.sh wordpress
+
+# 복원
+./scripts/restore.sh wordpress -b /path/to/backup
 ```
 
 ## 환경 변수
